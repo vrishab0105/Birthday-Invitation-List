@@ -1,0 +1,81 @@
+<html>
+    <head>
+        <Title>Birthday Invitation list By Vrishab</Title>
+        <style>
+            *{font-size: 30px;}
+            body{background-color: lightgreen;}
+            p{width: 50%;
+            font-size: 20px;
+        text-align: center;}
+        </style>
+    </head>
+
+    <body>
+    <center>
+        <h1>Birthday Invitation List</h1>
+        <form onsubmit="invite()">
+            <input type="submit" value="Add"/>
+            <input type="submit" value="Remove"/>
+            <input type="submit" value="Show"/>
+            
+        </form>
+        <h2 id="msg"></h2>
+        <br/><br/><br/><br/><br/>
+        <h2 style="font-size: 20px; border:1px solid black; width:15%; color:rgb(255, 98, 0);"> Developed by Vrishab Guided By Kamal Sir</h2>
+
+    </center>
+    <script>
+        let name=["Vrishab","Ganesh"];
+        function invite()
+        {
+            event.preventDefault();
+            let action=document.activeElement.value;
+
+            if(action === "Add")
+            {
+                let n=prompt("Enter Friends name");
+                if(n == "" || n.trim() === "" || !n.match(/^[A-Za-z ]+$/))
+                {
+                        alert("Enter Valid Name")              
+                }
+                else{
+                    name.push(n);
+                    alert("Added  " +n); 
+                }
+                
+                msg.innerHTML=name;
+
+
+            }
+
+            else if(action === "Remove")
+            {
+                let n=prompt("Enter the name to be removed");
+                let pos=name.indexOf(n);
+                if(n == "" || n.trim() === "" || !n.match(/^[A-Za-z ]+$/))
+                {
+                    alert("Enter a valid Name");
+
+                }
+                
+                else if(pos === -1)
+                {
+                    alert(n+ " Not Found");
+                }
+                else
+                {
+                    name.splice(pos,1);
+                    alert(n+ " Removed");
+                }
+                msg.innerHTML=name;
+                
+            }
+
+            else if(action === "Show")
+            {
+                msg.innerHTML=name;
+            }
+        }
+    </script>
+    </body>
+</html>
